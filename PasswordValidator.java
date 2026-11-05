@@ -1,7 +1,3 @@
-import java.util.Scanner;
-
-import static java.lang.Character.isLetter;
-
 public class PasswordValidator{
      private static boolean hasLetterAndDigit(String password) {
         boolean hasDigit = false;
