@@ -1,0 +1,8 @@
+enum PasswordError {
+    NONE,
+    EMPTY,
+    TOO_SHORT,
+    TOO_LONG,
+    INVALID_CHARACTERS,
+    MISSING_LETTER_OR_DIGIT
+}
