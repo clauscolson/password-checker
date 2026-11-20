@@ -27,13 +27,23 @@ public class PasswordChecker {
         while (!passwordIsValid) {
             System.out.println("Create your password: ");
             password = console.nextLine();
-            String error = PasswordValidator.getErrorMessage(password);
-            if (error.isEmpty()){
-                System.out.println("Pass is valid.");
-                passwordIsValid = true;
-            } else {
-                System.out.println(error);
+            PasswordError error = PasswordValidator.validatePassword(password);
+                switch (error){
+                    case NONE -> {
+                        System.out.println("Pass is valid!");
+                        passwordIsValid = true;
+                    }
+                    case EMPTY -> System.out.println("Pass cannot to be Empty!");
+
+                    case TOO_LONG -> System.out.println("Pass is too long!");
+
+                    case TOO_SHORT -> System.out.println("Pass is too short!");
+
+                    case INVALID_CHARACTERS -> System.out.println("Pass must contain only English letters and nums!");
+
+                    case MISSING_LETTER_OR_DIGIT -> System.out.println("Pass must contain at least one digit and one letter!");
+
+                }
             }
         }
     }
-}

@@ -12,18 +12,18 @@ public class PasswordValidator{
             }
         return hasDigit && hasLetter;
     }
-     static String getErrorMessage(String password) {
+     static PasswordError validatePassword(String password) {
          if (password.isBlank()) {
-             return "Password must not be empty.";
+             return PasswordError.EMPTY;
          } else if (password.length() < 8) {
-             return "Password is too short.";
+             return PasswordError.TOO_SHORT;
          } else if (password.length() > 16) {
-             return "Password is too long.";
+             return PasswordError.TOO_LONG;
          } else if (!password.matches("[a-zA-Z0-9]+")) {
-             return "Use only English letters and Digits!";
+             return PasswordError.INVALID_CHARACTERS;
          } else if (!hasLetterAndDigit(password)) {
-             return "At least one letter and one digit.";
-         } return "";
+             return PasswordError.MISSING_LETTER_OR_DIGIT;
+         } return  PasswordError.NONE;
      }
 }
 
